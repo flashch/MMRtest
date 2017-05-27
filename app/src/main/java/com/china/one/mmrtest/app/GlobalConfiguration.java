@@ -21,6 +21,7 @@ import com.china.one.commom.http.GlobalHttpHandler;
 import com.china.one.commom.http.RequestInterceptor;
 import com.china.one.commom.integration.ConfigModule;
 import com.china.one.commom.integration.IRepositoryManager;
+import com.china.one.commom.utils.LogUtils;
 import com.china.one.commom.utils.UiUtils;
 import com.china.one.mmrtest.BuildConfig;
 import com.china.one.mmrtest.R;
@@ -37,6 +38,7 @@ import org.json.JSONObject;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -45,7 +47,6 @@ import timber.log.Timber;
 /**
  * app的全局配置信息在此配置,需要将此实现类声明到AndroidManifest中
  */
-
 
 public class GlobalConfiguration implements ConfigModule {
     @Override
@@ -125,6 +126,7 @@ public class GlobalConfiguration implements ConfigModule {
 
     @Override
     public void injectAppLifecycle(Context context, List<AppDelegate.Lifecycle> lifecycles) {
+        LogUtils.debugInfo("----------------------初始化应用信息------------------------------------");
         // AppDelegate.Lifecycle 的所有方法都会在基类Application对应的生命周期中被调用,所以在对应的方法中可以扩展一些自己需要的逻辑
         lifecycles.add(new AppDelegate.Lifecycle() {
 

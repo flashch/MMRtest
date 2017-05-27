@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import com.china.one.commom.base.BaseActivity;
 import com.china.one.commom.base.DefaultAdapter;
 import com.china.one.commom.di.component.AppComponent;
@@ -58,8 +57,6 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
         mPresenter.requestUsers(true);//打开app时自动加载列表
     }
 
-
-
     @Override
     public void onRefresh() {
         mPresenter.requestUsers(true);
@@ -72,7 +69,6 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
         mSwipeRefreshLayout.setOnRefreshListener(this);
         UiUtils.configRecycleView(mRecyclerView, new GridLayoutManager(this, 2));
     }
-
 
     @Override
     public void showLoading() {
