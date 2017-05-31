@@ -13,6 +13,7 @@
         <activity android:name=".SettingActivity">
         </activity>
         <activity android:name=".view.ClipImageActivity"></activity>
+        <activity android:name=".FeedbackActivity"></activity>
     </application>
 
 </manifest>

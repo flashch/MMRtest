@@ -58,8 +58,6 @@ dependencies {
     }
     compile rootProject.ext.dependencies["annotations"]
 
-
-
     //view
     compile (rootProject.ext.dependencies["autolayout"]) {
         exclude group: 'com.android.support'
@@ -67,6 +65,9 @@ dependencies {
     compile (rootProject.ext.dependencies["butterknife"]){
         exclude module: 'support-annotations'
     }
+
+    compile rootProject.ext.dependencies["nineoldandroids"]
+    compile rootProject.ext.dependencies["FlycoTabLayout_Lib"]
 
 
 

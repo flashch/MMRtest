@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.china.one.mmrtest.mvp.ui.fragment.Test1Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试" />
+    <Button
+        android:id="@+id/bt_go_setting_module"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置module"
+        />
+
+    <Button
+        android:id="@+id/bt_go_login_module"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录module" />
+</LinearLayout>

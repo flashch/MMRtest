@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/commom" />
+            <option value="$PROJECT_DIR$/login-module" />
             <option value="$PROJECT_DIR$/setting-module" />
             <option value="$PROJECT_DIR$/test-module" />
           </set>

@@ -1,3 +1,6 @@
-include ':app',':commom'
+include ':app'
+include ':commom'
 include ':setting-module'
 include ':test-module'
+include ':setting-module'
+include ':login-module'

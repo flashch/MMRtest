@@ -8,10 +8,13 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
+@Route(path = "/activity/feedback")
 public class FeedbackActivity extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after

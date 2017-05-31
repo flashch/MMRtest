@@ -2,13 +2,13 @@ package com.china.one.mmrtest.mvp.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import com.china.one.commom.base.BaseActivity;
 import com.china.one.commom.base.DefaultAdapter;
 import com.china.one.commom.di.component.AppComponent;
+import com.china.one.commom.utils.LogUtils;
 import com.china.one.commom.utils.UiUtils;
 import com.china.one.mmrtest.R;
 import com.china.one.mmrtest.di.component.DaggerUserComponent;
@@ -24,14 +24,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 public class UserActivity extends BaseActivity<UserPresenter> implements UserContract.View, SwipeRefreshLayout.OnRefreshListener {
-
-    @Nullable
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
-    @Nullable
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
-
     private Paginate mPaginate;
     private boolean isLoadingMore;
     private RxPermissions mRxPermissions;
@@ -54,7 +50,9 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        //mRecyclerView= (RecyclerView) findViewById(R.id.recyclerView);
         mPresenter.requestUsers(true);//打开app时自动加载列表
+
     }
 
     @Override
@@ -101,6 +99,9 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
 
     @Override
     public void setAdapter(DefaultAdapter adapter) {
+        if(mRecyclerView==null){
+            LogUtils.debugInfo("mRecyclerView控制着");
+        }
         mRecyclerView.setAdapter(adapter);
         initRecycleView();
         initPaginate();

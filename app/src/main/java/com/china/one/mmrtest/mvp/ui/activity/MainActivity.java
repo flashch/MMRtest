@@ -1,43 +1,60 @@
 package com.china.one.mmrtest.mvp.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
+import android.support.v4.app.Fragment;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.china.one.commom.utils.UiUtils;
+import com.china.one.commom.base.BaseActivity;
+import com.china.one.commom.di.component.AppComponent;
 import com.china.one.mmrtest.R;
+import com.china.one.mmrtest.mvp.model.entity.TabEntity;
+import com.china.one.mmrtest.mvp.ui.fragment.Test1Fragment;
+import com.china.one.mmrtest.mvp.ui.fragment.Test2Fragment;
+import com.china.one.mmrtest.mvp.ui.fragment.Test3Fragment;
+import com.china.one.mmrtest.mvp.ui.fragment.Test4Fragment;
+import com.china.one.mmrtest.mvp.ui.fragment.VideoFragment;
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
-
-    @BindView(R.id.bt_test)
-    Button btTest;
-    @BindView(R.id.bt_setting)
-    Button btSetting;
-
+public class MainActivity extends BaseActivity {
+    @BindView(R.id.ctl_bottom_title)
+    CommonTabLayout ctlBottomTitle;
+    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private ArrayList<Fragment> fragments=new ArrayList<>();
+    private String[] mTitles = {"直播", "测试", "视频", "地图", "我的"};
+    private int[] mIconUnselectIds = {
+            R.mipmap.ic_launcher, R.mipmap.ic_launcher,
+            R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+    private int[] mIconSelectIds = {
+            R.mipmap.ic_launcher, R.mipmap.ic_launcher,
+            R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    public void setupActivityComponent(AppComponent appComponent) {
+
     }
 
-    @OnClick({R.id.bt_test, R.id.bt_setting})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.bt_test:
-                UiUtils.makeText(MainActivity.this,"测试");
-                ARouter.getInstance().build("/test/activity").navigation();
-                break;
-            case R.id.bt_setting:
-                UiUtils.makeText(MainActivity.this,"设置");
-                ARouter.getInstance().build("/module/setting").navigation();
-                break;
+    @Override
+    public int initView(Bundle savedInstanceState) {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        initFragments();
+        for (int i = 0; i < mTitles.length; i++) {
+            mTabEntities.add(new TabEntity(mTitles[i],mIconSelectIds[i], mIconUnselectIds[i]));
         }
+        ctlBottomTitle.setTabData(mTabEntities,MainActivity.this,R.id.main_container,fragments);
+    }
+
+    private void initFragments() {
+        fragments.add(new VideoFragment());
+        fragments.add(new Test1Fragment());
+        fragments.add(new Test2Fragment());
+        fragments.add(new Test3Fragment());
+        fragments.add(new Test4Fragment());
     }
 }

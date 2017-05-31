@@ -32,7 +32,8 @@ import com.china.one.setting_module.view.ClipImageActivity;
 import com.china.one.setting_module.view.SettingItem;
 
 import java.io.File;
-@Route(path = "/module/setting")
+
+@Route(path = "/setting/settingActivity")
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
     //检查更新
     private SettingItem mSiItemTwo;

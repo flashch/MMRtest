@@ -63,26 +63,28 @@ buildscript {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
     //tools
     provided rootProject.ext.dependencies["javax.annotation"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     compile rootProject.ext.dependencies["arouter-api"]
-    //view
-    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-    compile rootProject.ext.dependencies["paginate"]
-    compile rootProject.ext.dependencies["FlycoTabLayout_Lib"]
     //module
     if (isBuildModule.toBoolean()) {
-        compile project(':common')
+        compile project(':commom')
     } else {
         compile project(':test-module')
         compile project(':setting-module')
+        compile project(':login-module')
     }
+    //view
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    compile rootProject.ext.dependencies["paginate"]
+
     //test
     testCompile rootProject.ext.dependencies["junit"]
     debugCompile rootProject.ext.dependencies["canary-debug"]
     releaseCompile rootProject.ext.dependencies["canary-release"]
     testCompile rootProject.ext.dependencies["canary-release"]
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
 }
